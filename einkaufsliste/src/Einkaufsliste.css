@@ -1,14 +1,33 @@
-.dateTimePicker .datePicker {
-    max-width: 170px;
-}
-.dateTimePicker .timePicker {
-    max-width: 100px;
-}
-
 .mb-3 {
     max-width: 480px;
 }
 
 .testClass {
     width: 50px;
+}
+
+.App {
+    width: 300px;
+}
+
+.addButton {
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    background-image: url("./img/add.svg");
+}
+
+.listInput {
+
+}
+
+#addContainer{
+    display: flex;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
 }
