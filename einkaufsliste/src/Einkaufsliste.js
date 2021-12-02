@@ -28,6 +28,9 @@ export default function Einkaufsliste() {
         const newList = list.filter((item) => item.id !== id);
         setList(newList);
     }
+    function clearInput() {
+        document.getElementById('text').value = '';
+    }
 
     function ShoppingListElement(text) {
         return (
@@ -49,8 +52,8 @@ export default function Einkaufsliste() {
         <div className="App">
             <h1>Deine Einkaufsliste</h1>
             <header className="App-header">
-                <input type="text" onChange={handleChange}/>
-                <button onClick={handleAdd}>+ add item</button>
+                <input id={"text"} type="text" onChange={handleChange}/>
+                <button onClick={() => { handleAdd(); clearInput();}}>+ add item</button>
                 <ul>
                     {list.map((item) => (
                         <li key={item.id}>{item.name}
@@ -59,8 +62,8 @@ export default function Einkaufsliste() {
                                     <div key={`default-${type}`} className="mb-3">
                                         <Form.Check
                                             type={type}
-                                            id={`default-${type}`}
-                                            label={`default ${type}`}
+                                            id={`-${type}` + idCounter}
+                                            label={'eingekauft'}
                                         />
                                     </div>
                                 ))}
