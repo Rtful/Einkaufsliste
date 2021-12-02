@@ -8,3 +8,7 @@
 .mb-3 {
     max-width: 480px;
 }
+
+.testClass {
+    width: 50px;
+}
