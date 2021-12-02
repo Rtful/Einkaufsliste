@@ -1,0 +1,10 @@
+.dateTimePicker .datePicker {
+    max-width: 170px;
+}
+.dateTimePicker .timePicker {
+    max-width: 100px;
+}
+
+.mb-3 {
+    max-width: 480px;
+}
