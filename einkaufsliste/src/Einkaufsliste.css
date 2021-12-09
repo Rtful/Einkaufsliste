@@ -8,15 +8,29 @@
 
 .App {
     width: 300px;
+    background-color: #a7cff1;
+    padding: 5px;
 }
 
 .addButton {
+    height: 32px;
+    width: 34px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    background-image: url("./img/add.svg");
+    background-color: #a7cff1;
+}
+
+.removeButton {
     height: 30px;
     width: 30px;
     background-repeat: no-repeat;
     background-size: cover;
     border: none;
-    background-image: url("./img/add.svg");
+    background-image: url("./img/trash.svg");
+    background-color: #a7cff1;
+    align-items: center;
 }
 
 .listInput {
@@ -25,9 +39,34 @@
 
 #addContainer{
     display: flex;
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+#addContainer .listInput {
+    width: 100%;
 }
 
 ul {
-    list-style: none;
-    padding-left: 0;
+    list-style: none !important;
+    padding-left: 0 !important;
+    height: 372px;
+    overflow-x: auto;
+}
+
+li{
+    display: flex;
+    width: 100%;
+    padding: 2px;
+}
+
+li div {
+    width: 100%;
+    align-items: center;
+    margin: 0;
+    display: flex;
+}
+
+li div .mb-3, .form-check {
+    margin: 0 !important;
 }

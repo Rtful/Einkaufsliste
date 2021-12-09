@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import './Einkaufsliste.css';
-import {InputGroup} from 'react-bootstrap';
-import {FormControl} from "react-bootstrap";
 import {Form} from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -47,7 +45,7 @@ export default function Einkaufsliste() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Deine Einkaufsliste</h1>
+                <h1>Einkaufsliste</h1>
             </header>
 <div id="addContainer">
             <input className="listInput" type="text" onChange={handleChange}/>
@@ -67,9 +65,7 @@ export default function Einkaufsliste() {
                                 </div>
                             ))}
                         </div>
-                        <button type="button" onClick={() => handleRemove(item.id)}>
-                            Remove
-                        </button>
+                        <button type="button" className="removeButton" onClick={() => handleRemove(item.id)}></button>
                     </li>
                 ))}
             </ul>
