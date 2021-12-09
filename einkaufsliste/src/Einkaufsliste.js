@@ -26,41 +26,25 @@ export default function Einkaufsliste() {
         setList(newList);
     }
 
-    function ShoppingListElement(text) {
-        return (
-            <div>
-                {['checkbox'].map((type) => (
-                    <div key={`default-${type}`} className="mb-3">
-                        <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label={`default ${type}`}
-                        />
-                    </div>
-                ))}
-            </div>
-        )
-    }
-
     return (
         <div className="App">
             <header className="App-header">
                 <h1>Einkaufsliste</h1>
             </header>
-<div id="addContainer">
-            <input className="listInput" type="text" onChange={handleChange}/>
-            <button className="addButton" onClick={handleAdd}></button>
-</div>
+            <div id="addContainer">
+                <input className="listInput" type="text" onChange={handleChange}/>
+                <button className="addButton" onClick={handleAdd}></button>
+            </div>
             <ul>
                 {list.map((item) => (
-                    <li key={item.id}>{item.name}
+                    <li key={item.id}>
                         <div>
                             {['checkbox'].map((type) => (
                                 <div key={`default-${type}`} className="mb-3">
                                     <Form.Check
                                         type={type}
                                         id={`default-${type}`}
-                                        label={`default ${type}`}
+                                        label={`${item.name}`}
                                     />
                                 </div>
                             ))}
