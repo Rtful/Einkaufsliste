@@ -1,7 +1,5 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Einkaufsliste.css';
-import {InputGroup} from 'react-bootstrap';
-import {FormControl} from "react-bootstrap";
 import {Form} from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,23 +7,40 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Einkaufsliste() {
 
     const [idCounter, setIdCounter] = useState(0)
-    const initialList = [];
-    const [list, setList] = useState(initialList);
+    const [list, setList] = useState([]);
     const [product, setProduct] = useState('');
+
+    useEffect(() =>{
+        getLocalStorage()
+    },[])
 
     function handleChange(event) {
         setProduct(event.target.value);
+    }
+
+    const getLocalStorage = () => {
+        let tempList = localStorage.getItem("list")
+        if(tempList == null){
+            localStorage.setItem("list", JSON.stringify([]))
+        }else{
+            setList(JSON.parse(tempList))
+        }
     }
 
     function handleAdd() {
         setIdCounter(idCounter + 1)
         const newList = list.concat({name: product, id: idCounter});
         setList(newList);
+        localStorage.setItem("list", JSON.stringify(newList))
     }
 
     function handleRemove(id) {
         const newList = list.filter((item) => item.id !== id);
         setList(newList);
+        localStorage.setItem("list", JSON.stringify(newList))
+    }
+    function clearInput() {
+        document.getElementById('text').value = '';
     }
 
     function ShoppingListElement(text) {
@@ -49,10 +64,10 @@ export default function Einkaufsliste() {
             <header className="App-header">
                 <h1>Deine Einkaufsliste</h1>
             </header>
-<div id="addContainer">
-            <input className="listInput" type="text" onChange={handleChange}/>
-            <button className="addButton" onClick={handleAdd}></button>
-</div>
+            <div id="addContainer">
+                <input id="text" className="listInput" type="text" onChange={handleChange}/>
+                <button onClick={() => { handleAdd(); clearInput();}}>add</button>
+            </div>
             <ul>
                 {list.map((item) => (
                     <li key={item.id}>{item.name}
@@ -61,8 +76,8 @@ export default function Einkaufsliste() {
                                 <div key={`default-${type}`} className="mb-3">
                                     <Form.Check
                                         type={type}
-                                        id={`default-${type}`}
-                                        label={`default ${type}`}
+                                        id={`-${type}` + idCounter}
+                                        label={'eingekauft'}
                                     />
                                 </div>
                             ))}
