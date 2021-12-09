@@ -43,26 +43,10 @@ export default function Einkaufsliste() {
         document.getElementById('text').value = '';
     }
 
-    function ShoppingListElement(text) {
-        return (
-            <div>
-                {['checkbox'].map((type) => (
-                    <div key={`default-${type}`} className="mb-3">
-                        <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label={`default ${type}`}
-                        />
-                    </div>
-                ))}
-            </div>
-        )
-    }
-
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Deine Einkaufsliste</h1>
+                <h1>Einkaufsliste</h1>
             </header>
             <div id="addContainer">
                 <input id="text" className="listInput" type="text" onChange={handleChange}/>
@@ -70,7 +54,7 @@ export default function Einkaufsliste() {
             </div>
             <ul>
                 {list.map((item) => (
-                    <li key={item.id}>{item.name}
+                    <li key={item.id}>
                         <div>
                             {['checkbox'].map((type) => (
                                 <div key={`default-${type}`} className="mb-3">
@@ -82,9 +66,7 @@ export default function Einkaufsliste() {
                                 </div>
                             ))}
                         </div>
-                        <button type="button" onClick={() => handleRemove(item.id)}>
-                            Remove
-                        </button>
+                        <button type="button" className="removeButton" onClick={() => handleRemove(item.id)}></button>
                     </li>
                 ))}
             </ul>
